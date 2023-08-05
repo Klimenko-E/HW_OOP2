@@ -1,26 +1,40 @@
 package ru.netology.radio;
 
 public class Radio {
+
     private int currentStation;      //текущая станция
     private int currentVolume;      //текущая громкость
+    private int numberStation = 10;
+    private int minStation = 0;
+    private int maxStation = numberStation - 1;
+    private int maxVolume = 100;
+    private int minVolume = 0;
+
+    public Radio(int numberStation) {
+        this.numberStation = numberStation;
+        this.maxStation = numberStation - 1;
+    }
+
+    public Radio() {
+    }
 
     public int getCurrentStation() {
         return currentStation;
     }
 
     public void setCurrentStation(int newCurrentStation) {      //установка станции
-        if (newCurrentStation < 0) {
+        if (newCurrentStation < minStation) {
             return;
         }
-        if (newCurrentStation > 9) {
+        if (newCurrentStation > maxStation) {
             return;
         }
         currentStation = newCurrentStation;
     }
 
     public void nextStation() {         //следующая станция
-        if (currentStation == 9) {
-            currentStation = 0;
+        if (currentStation == maxStation) {
+            currentStation = minStation;
 
         } else {
             currentStation++;
@@ -28,8 +42,8 @@ public class Radio {
     }
 
     public void prevStation() {         //предыдущая станция
-        if (currentStation == 0) {
-            currentStation = 9;
+        if (currentStation == minStation) {
+            currentStation = maxStation;
 
         } else {
             currentStation--;
@@ -46,20 +60,20 @@ public class Radio {
     }
 
     public void increaseVolume() {          //увеличение громкости
-        if (currentVolume < 100) {
+        if (currentVolume < maxVolume) {
             currentVolume++;
 
         } else {
-            currentVolume = 100;
+            currentVolume = maxVolume;
         }
     }
 
     public void decreaseVolume() {      //уменьшение громкости
-        if (currentVolume > 0) {
+        if (currentVolume > minVolume) {
             currentVolume--;
 
         } else {
-            currentVolume = 0;
+            currentVolume = minVolume;
         }
     }
 

@@ -5,9 +5,11 @@ import org.junit.jupiter.api.Test;
 
 public class RadioTest {
 
+    Radio rad = new Radio();
+
     @Test
     public void shouldSetStation() {        //установка номера станции
-        Radio rad = new Radio();
+        // Radio rad = new Radio();
 
         rad.setCurrentStation(1);
 
@@ -19,7 +21,7 @@ public class RadioTest {
 
     @Test
     public void shouldSetStationLessMin() {         //установка номера станиции меньше минимальной
-        Radio rad = new Radio();
+        // Radio rad = new Radio();
 
         rad.setCurrentStation(-1);
 
@@ -31,7 +33,7 @@ public class RadioTest {
 
     @Test
     public void shouldSetStationMoreMax() {         //установка номера станции больше максимальной
-        Radio rad = new Radio();
+        // Radio rad = new Radio();
 
         rad.setCurrentStation(10);
 
@@ -43,7 +45,7 @@ public class RadioTest {
 
     @Test
     public void nextStation() {                 //переключиние на следующую станцию
-        Radio rad = new Radio();
+        // Radio rad = new Radio();
 
         rad.setCurrentStation(0);
         rad.nextStation();
@@ -56,7 +58,7 @@ public class RadioTest {
 
     @Test
     public void nextStationMoreMax() {   //переключение на следующую станцию после максимальной
-        Radio rad = new Radio();
+        // Radio rad = new Radio();
 
         rad.setCurrentStation(9);
         rad.nextStation();
@@ -69,7 +71,7 @@ public class RadioTest {
 
     @Test
     public void prevStation() {         //переключение на предыдущую станцию
-        Radio rad = new Radio();
+        //Radio rad = new Radio();
 
         rad.setCurrentStation(3);
         rad.prevStation();
@@ -82,7 +84,7 @@ public class RadioTest {
 
     @Test
     public void prevStationLessMin() {        //переключение на предыдущую станцию до минимальной
-        Radio rad = new Radio();
+        // Radio rad = new Radio();
 
         rad.setCurrentStation(0);
         rad.prevStation();
@@ -95,8 +97,24 @@ public class RadioTest {
 
 
     @Test
+    public void shouldSetStationMoreMax50() {         //установка номера станции больше максимальной
+        Radio rad = new Radio(50);
+
+        rad.setCurrentStation(49);
+        rad.nextStation();
+
+        int expected = 0;
+        int actual = rad.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+    Radio vol = new Radio();
+
+    @Test
     public void increaseVolume() {      //увеличение громкости
-        Radio vol = new Radio();
+        // Radio vol = new Radio();
 
         vol.setCurrentVolume(9);
         vol.increaseVolume();
@@ -110,7 +128,7 @@ public class RadioTest {
 
     @Test
     public void increaseVolumeMoreMax() {       //увеличение громкости выше максимальной
-        Radio vol = new Radio();
+        // Radio vol = new Radio();
 
         vol.setCurrentVolume(100);
         vol.increaseVolume();
@@ -123,7 +141,7 @@ public class RadioTest {
 
     @Test
     public void decreaseVolume() {          //уменьшение громкости
-        Radio vol = new Radio();
+        // Radio vol = new Radio();
 
         vol.setCurrentVolume(5);
         vol.decreaseVolume();
@@ -136,7 +154,7 @@ public class RadioTest {
 
     @Test
     public void decreaseVolumeLessMin() {       //уменьшение громкости ниже минимальной
-        Radio vol = new Radio();
+        // Radio vol = new Radio();
 
         vol.setCurrentVolume(0);
         vol.decreaseVolume();
